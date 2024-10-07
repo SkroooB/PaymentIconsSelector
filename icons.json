@@ -1,0 +1,56 @@
+{
+  "icons": [
+    {
+      "name": "Mastercard",
+      "src": "https://download.host2b.net/imagem/payment-icon/mastercard.svg"
+    },
+    {
+      "name": "Visa",
+      "src": "https://download.host2b.net/imagem/payment-icon/visa.svg"
+    },
+    {
+      "name": "AMEX",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/american-express-C5u3GtBWzgsC.svg"
+    },
+    {
+      "name": "OMNet",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/omannet-D5mR9PXjZ0GR.svg"
+    },
+    {
+      "name": "Meza",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/meeza-BioHdInLBMYu.svg"
+    },
+    {
+      "name": "Mada",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/mada-DtQeN1kEvjMO.svg"
+    },
+    {
+      "name": "Valu",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/valu-CdxKZeZTK-1Q.svg"
+    },
+    {
+      "name": "Sympl",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/sympl-Olf1BWK3Up-B.svg"
+    },
+    {
+      "name": "Tabby",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/tabby-DiuR-SEJVFnb.svg"
+    },
+    {
+      "name": "PostPay",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/postpay-BLqH4SPNt9dB.svg"
+    },
+    {
+      "name": "Tamara",
+      "src": "https://cdn.shopify.com/shopifycloud/web/assets/v1/vite/client/en/assets/tamara-CrLJQNIy_7-2.svg"
+    },
+    {
+      "name": "Apple Pay",
+      "src": "https://www.svgrepo.com/show/303275/apple-pay-payment-mark-logo.svg"
+    },
+    {
+      "name": "Google Pay",
+      "src": "https://www.svgrepo.com/show/452222/google-pay.svg"
+    }
+  ]
+}

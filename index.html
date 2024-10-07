@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Icons Selector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100 p-8">
+    <!-- Payment Icons with Toggle -->
+    <div class="max-w-xl mx-auto p-4 bg-white shadow-md rounded-lg">
+      <h2 class="text-lg font-bold text-center mb-4">
+        Select Payment Icons for your website's footer
+      </h2>
+      <div id="icon-container" class="grid grid-cols-3 gap-4 text-center">
+        <!-- Icons will be loaded here dynamically -->
+      </div>
+
+      <!-- Submit Button -->
+      <div class="grid grid-cols-3 gap-x-2">
+        <button
+          class="col-span-2 mt-4 w-full uppercase bg-emerald-400 hover:bg-emerald-500 transition duration-100 text-white font-semibold py-2 px-4 rounded"
+          onclick="generateCode()"
+        >
+          S u b m i t
+        </button>
+
+        <!-- Clear Button -->
+        <button
+          class="mt-4 w-full uppercase bg-red-400 hover:bg-red-500 transition duration-100 text-white font-semibold py-2 px-4 rounded"
+          onclick="clearSelection()"
+        >
+          C l e a r
+        </button>
+      </div>
+
+      <h3 class="mt-6 text-lg font-bold">Generated Code:</h3>
+      <textarea
+        id="generatedCode"
+        rows="10"
+        disabled
+        cols="50"
+        style="resize: none"
+        class="w-full mt-2 p-2 disabled border border-gray-300 rounded-lg"
+      ></textarea>
+      <div class="flex justify-center items-center text-xs text-gray-400 mt-2">
+        <h1>Made with ❤️ by SkroooB</h1>
+      </div>
+    </div>
+
+    <script>
+      // Load JSON and create the icon toggle buttons
+      async function loadIcons() {
+        try {
+          const response = await fetch("icons.json");
+          const data = await response.json();
+          const iconContainer = document.getElementById("icon-container");
+
+          data.icons.forEach((icon) => {
+            // Create a button element for each icon
+            const button = document.createElement("button");
+            button.classList.add(
+              "icon-toggle",
+              "relative",
+              "bg-gray-200",
+              "p-2",
+              "rounded-lg",
+              "flex",
+              "flex-col",
+              "items-center"
+            );
+            button.setAttribute(
+              "data-value",
+              `<img src="${icon.src}" alt="${icon.name} Icon SVG" width="38" height="24">`
+            );
+            button.innerHTML = `
+                        <img src="${icon.src}" alt="${icon.name} Icon SVG" width="38" height="24">
+                        <span class="text-xs mt-1 text-gray-700">${icon.name}</span>
+                        <span class="check-icon absolute top-1 right-1 text-white text-lg hidden">✔</span>
+                    `;
+            button.onclick = () => toggleIcon(button);
+            iconContainer.appendChild(button);
+          });
+        } catch (error) {
+          console.error("Error loading icons:", error);
+        }
+      }
+
+      // Call loadIcons on page load
+      window.onload = loadIcons;
+
+      // Toggle icon selection
+      function toggleIcon(button) {
+        button.classList.toggle("bg-blue-200");
+        button.classList.toggle("bg-gray-200");
+        button.classList.toggle("selected");
+
+        // Toggle the visibility of the check icon
+        const checkIcon = button.querySelector(".check-icon");
+        if (checkIcon.classList.contains("hidden")) {
+          checkIcon.classList.remove("hidden");
+        } else {
+          checkIcon.classList.add("hidden");
+        }
+      }
+
+      // Generate the code for the selected icons
+      function generateCode() {
+        const selectedIcons = document.querySelectorAll(
+          ".icon-toggle.selected"
+        );
+        let code =
+          '<div>\n<div class="footer__aside-item footer__aside-item--payment" align="center">\n<div class="payment-list">\n';
+        selectedIcons.forEach((icon) => {
+          code += icon.getAttribute("data-value") + "\n";
+        });
+        code += "</div>\n</div>\n</div>";
+        document.getElementById("generatedCode").value = code;
+      }
+
+      // Clear selection and reset the textarea
+      function clearSelection() {
+        // Deselect all icons
+        const selectedIcons = document.querySelectorAll(
+          ".icon-toggle.selected"
+        );
+        selectedIcons.forEach((icon) => {
+          icon.classList.remove("bg-blue-200");
+          icon.classList.add("bg-gray-200");
+          icon.classList.remove("selected");
+
+          // Hide the check icon
+          const checkIcon = icon.querySelector(".check-icon");
+          checkIcon.classList.add("hidden");
+        });
+
+        // Clear the generated code
+        document.getElementById("generatedCode").value = "";
+      }
+    </script>
+  </body>
+</html>
